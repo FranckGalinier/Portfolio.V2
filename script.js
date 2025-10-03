@@ -163,22 +163,22 @@ projectsTimeline.to("#projects h2", {
   opacity: 1
 });
 
-const contactTimeline = gsap.timeline({
+const skillsTimeline = gsap.timeline({
   scrollTrigger: {
     trigger: "#skills",
     start: "top 60%",
     end: "bottom 30%",
-    toggleActions: "play none none none"
+    toggleActions: "play reverse play reverse"
   }
 }).from("#skills h2, #skills .bubble-container, #skills .badge-bubble", {
   opacity: 0,
   y: 20,
   duration: 0.3,
   ease: "power1.inOut",
-  stagger: 0.3
+  stagger: 0.1
 });
 
-contactTimeline.to("#skills h2", {
+skillsTimeline.to("#skills h2", {
   duration: 0.1,
   repeat: 5,
   yoyo: false,
@@ -193,7 +193,7 @@ contactTimeline.to("#skills h2", {
 });
 
 // Stabilisation finale du néon
-contactTimeline.to("#skills h2", {
+skillsTimeline.to("#skills h2", {
   duration: 0.5,
   ease: "power1.inOut",
   textShadow: `
@@ -245,9 +245,9 @@ function moveBubble(ball) {
   });
 }
 
-gsap.timeline({
+const contactTimeline = gsap.timeline({
   scrollTrigger: {
-    trigger: "#contact",
+    trigger: "#contact h2",
     start: "top 60%",
     toggleActions: "play reverse play reverse"
   }
@@ -256,8 +256,37 @@ gsap.timeline({
   y: 20,
   duration: 0.1,
   ease: "power1.inOut",
-  stagger: 0.3
+  stagger: 0.1
 });
+
+
+contactTimeline.to("#contact h2", {
+  duration: 0.1,
+  repeat: 5,
+  yoyo: false,
+  ease: "power1.inOut",
+    textShadow: `
+    0 0 12px #64FFDA,
+    0 0 24px #64FFDA,
+    0 0 36px #40E0D0,
+    0 0 48px #40E0D0
+  `,
+  opacity: 0.9,
+});
+
+// Stabilisation finale du néon
+contactTimeline.to("#contact h2", {
+  duration: 0.5,
+  ease: "power1.inOut",
+  textShadow: `
+    0 0 8px #64FFDA,
+    0 0 16px #40E0D0,
+    0 0 24px #40E0D0
+  `,
+  color: "#64FFDA",
+  opacity: 1
+});
+
 
 
 // Effet suivi du curseur mouseBlur
